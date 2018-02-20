@@ -18,8 +18,10 @@
           <%= if @current_user do %>
             <p>
               Logged in as: <%= @current_user.name %> |
-              <%= link "Log Out", to: "/session", method: :delete %>
+              <%= link "Log Out", to: "/session", method: :delete %> |
+              <a href="/task">Tasks</a>
             </p>
+
           <% else %>
             <p>Not logged in.</p>
           <% end %>

@@ -31,6 +31,8 @@ defmodule TaskTrackerWeb.Router do
 
     post "/session", SessionController, :create
     delete "/session", SessionController, :delete
+
+    get "/task", PageController, :task
   end
 
   # Other scopes may use custom stacks.
