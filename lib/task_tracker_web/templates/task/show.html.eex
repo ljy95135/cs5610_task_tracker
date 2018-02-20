@@ -1,6 +1,10 @@
 <h2>Show Task</h2>
 
 <ul>
+  <li>
+    <strong>User:</strong>
+    <%= @task.user.name %>
+  </li>
 
   <li>
     <strong>Title:</strong>
