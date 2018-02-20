@@ -5,7 +5,7 @@ defmodule TaskTracker.Work do
 
   import Ecto.Query, warn: false
   alias TaskTracker.Repo
-
+  alias TaskTracker.Accounts
   alias TaskTracker.Work.Task
 
   @doc """
@@ -54,6 +54,10 @@ defmodule TaskTracker.Work do
 
   """
   def create_task(attrs \\ %{}) do
+    name = Map.get(attrs, "user_id")
+    user = Accounts.get_user_by_name(name)
+    attrs = Map.replace!(attrs, "user_id", user.id)
+    attrs = Map.put(attrs, "finished", :false)
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()

@@ -19,5 +19,19 @@ defmodule TaskTracker.Work.Task do
     task
     |> cast(attrs, [:title, :body, :finished, :used_time, :user_id])
     |> validate_required([:title, :body, :finished, :used_time, :user_id])
+    |> validate_change(:used_time, fn :used_time, time ->
+        if multiple15(time) do
+          []
+        else
+          [used_time: "must be 15's multiple"]
+        end
+    end)
   end
+
+
+
+  def multiple15(time) do
+    rem(time, 15) == 0
+  end
+
 end

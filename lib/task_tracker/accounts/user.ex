@@ -19,4 +19,5 @@ defmodule TaskTracker.Accounts.User do
     |> unique_constraint(:email)
     |> unique_constraint(:name)
   end
+
 end
