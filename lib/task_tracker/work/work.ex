@@ -22,6 +22,15 @@ defmodule TaskTracker.Work do
     |> Repo.preload(:user)
   end
 
+  def list_tasks_by_id(user_id) do
+    IO.puts(user_id)
+    query = from t in Task,
+                 where: t.user_id == ^user_id,
+                 select: [:id, :title, :body, :finished, :used_time, :user_id]
+    Repo.all(query)
+    |> Repo.preload(:user)
+  end
+
   @doc """
   Gets a single task.
 

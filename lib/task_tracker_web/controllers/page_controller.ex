@@ -6,7 +6,9 @@ defmodule TaskTrackerWeb.PageController do
   end
 
   def task(conn, _params) do
-    tasks = TaskTracker.Work.list_tasks()
+    id = get_session(conn, :user_id)
+    tasks = TaskTracker.Work.list_tasks_by_id(id)
+    #tasks = TaskTracker.Work.list_tasks()
     changeset = TaskTracker.Work.change_task(%TaskTracker.Work.Task{})
     render conn, "task.html", tasks: tasks, changeset: changeset
   end

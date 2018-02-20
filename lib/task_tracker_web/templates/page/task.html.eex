@@ -16,6 +16,7 @@
       <div class="card-body">
         <h6 class="card-title"><%= post.user.name %></h6>
         <p><%= post.body %></p>
+        <%= link "Edit", to: task_path(@conn, :edit, post.id) %>
       </div>
     </div>
   </div>
