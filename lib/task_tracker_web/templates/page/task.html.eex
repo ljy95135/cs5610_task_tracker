@@ -14,8 +14,16 @@
   <div class="col">
     <div class="card">
       <div class="card-body">
-        <h6 class="card-title"><%= post.user.name %></h6>
+        <h6 class="card-title"><%= post.user.name %>'s work</h6>
+        <p class = "text-info"><%= post.title %></p>
         <p><%= post.body %></p>
+        <p><strong>Used time:</strong> <%= div(post.used_time, 60)%> hours, <%= rem(post.used_time, 60)%> minutes</p>
+        <p><strong><%=
+        if post.finished do
+          "Finished"
+        else
+          "Not finished"
+        end %></strong></p>
         <%= link "Edit", to: task_path(@conn, :edit, post.id) %>
       </div>
     </div>
